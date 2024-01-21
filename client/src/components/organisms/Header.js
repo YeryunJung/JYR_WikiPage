@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
