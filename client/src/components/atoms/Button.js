@@ -7,8 +7,8 @@ const blueBtn = css`
 `;
 
 const big = css`
-  width: 200px;
-  height: 80px;
+  width: 220px;
+  height: 70px;
 `;
 
 const normal = css`

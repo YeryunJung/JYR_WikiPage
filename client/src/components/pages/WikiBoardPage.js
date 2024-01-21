@@ -6,7 +6,7 @@ function WikiBoardPage() {
     <>
       <Header />
       <Button size="big" color="blueBtn">
-        버튼
+        위키 추가하기
       </Button>
     </>
   );

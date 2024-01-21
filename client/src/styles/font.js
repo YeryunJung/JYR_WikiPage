@@ -29,6 +29,6 @@ export const normal = css`
 
 export const btnText = css`
   ${global}
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
 `;
