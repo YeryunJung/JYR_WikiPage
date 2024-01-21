@@ -1,5 +1,7 @@
+import Header from "../organisms/Header";
+
 function WikiBoardPage() {
-  return <h1>위키</h1>;
+  return <Header />;
 }
 
 export default WikiBoardPage;
