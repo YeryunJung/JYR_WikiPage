@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../organisms/Header";
 import Button from "../atoms/Button";
 import WikiList from "../organisms/WikiList";
+import PagenationButton from "../atoms/PagenationButton";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -26,6 +27,7 @@ function WikiBoardPage() {
         </Button>
       </BtnWrapper>
       <WikiList />
+      <PagenationButton />
     </Wrapper>
   );
 }

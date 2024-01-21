@@ -17,10 +17,9 @@ const Post = styled.li`
 const PostTitle = styled.div`
   ${fonts.normal}
 `;
-
 const PostDate = styled.div`
   ${fonts.small}
-  color: var(--silver-500);
+  color: var(--silver-600);
 `;
 
 function Wiki() {

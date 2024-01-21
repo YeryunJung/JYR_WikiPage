@@ -30,7 +30,6 @@ const ButtonStyle = styled.button`
           color: var(--black);
           background-color: var(--blue-50);
         `}
-  cursor: pointer;
 `;
 
 function Button({ children, ...props }) {
