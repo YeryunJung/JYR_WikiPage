@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../organisms/Header";
 import Button from "../atoms/Button";
-import Wiki from "../atoms/Wiki";
+import WikiList from "../organisms/WikiList";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -25,7 +25,7 @@ function WikiBoardPage() {
           위키 추가하기
         </Button>
       </BtnWrapper>
-      <Wiki />
+      <WikiList />
     </Wrapper>
   );
 }
