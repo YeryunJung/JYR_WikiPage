@@ -19,9 +19,6 @@ const normal = css`
 const sizes = { big, normal };
 
 const ButtonStyle = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 25px;
   border: none;
   ${fonts.btnText}

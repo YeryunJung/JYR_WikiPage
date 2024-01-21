@@ -3,12 +3,11 @@ import * as fonts from "../../styles/font";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 120px 20px 40px 20px;
+  padding: 100px 20px 40px 20px;
 `;
 
 const SubTitle = styled.div`
