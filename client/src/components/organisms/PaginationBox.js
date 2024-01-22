@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PaginationButton from "../atoms/PaginationButton";
-// import { ReactComponent as LeftArrow } from "../../../public/icons/left-pagination-arrow.svg";
-// import { ReactComponent as RightArrow } from "../../../public/icons/right-pagination-arrow.svg";
+import { ReactComponent as LeftArrow } from "../../icons/left-pagination-arrow.svg";
+import { ReactComponent as RightArrow } from "../../icons/right-pagination-arrow.svg";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -23,25 +23,40 @@ function PaginationBox({
   }
 
   function goToNextPage() {
-    setCurrentPage(currentPage + 1);
+    if (currentPage < totalPageNum) {
+      setCurrentPage(currentPage + 1);
+    }
   }
 
   function goToPrevPage() {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   }
-
-  console.log(totalPageNum, pageList);
 
   return (
     <Wrapper>
-      {pageList.length > 0 &&
+      <PaginationButton
+        pageNum={<LeftArrow />}
+        noActive
+        onClick={goToPrevPage}
+        disabled={currentPage === 1}
+      />
+      {pageList &&
         pageList.map((page) => (
           <PaginationButton
             key={page}
             onClick={() => setCurrentPage(page)}
             pageNum={page}
+            isActive={page === currentPage}
           />
         ))}
+      <PaginationButton
+        pageNum={<RightArrow />}
+        noActive
+        onClick={goToNextPage}
+        disabled={currentPage === totalPageNum}
+      />
     </Wrapper>
   );
 }
