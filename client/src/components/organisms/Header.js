@@ -23,7 +23,7 @@ function Header() {
   return (
     <Wrapper>
       <SubTitle>코딩허브 위키에 오신 것을 환영합니다</SubTitle>
-      <Title>어떤 강좌에 대해 알고 싶으신가요?</Title>
+      <Title>어떤 강의에 대해 알고 싶으신가요?</Title>
     </Wrapper>
   );
 }

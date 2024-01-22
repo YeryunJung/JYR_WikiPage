@@ -4,6 +4,10 @@ import * as fonts from "../../styles/font";
 const blueBtn = css`
   color: var(--white);
   background-color: var(--blue-400);
+
+  &:hover {
+    background-color: var(--blue-500);
+  }
 `;
 
 const big = css`
@@ -12,14 +16,15 @@ const big = css`
 `;
 
 const normal = css`
-  width: 160px;
-  height: 70px;
+  width: 100px;
+  height: 55px;
+  font-size: 20px;
 `;
 
 const sizes = { big, normal };
 
 const ButtonStyle = styled.button`
-  border-radius: 25px;
+  border-radius: 20px;
   border: none;
   ${fonts.btnText}
   ${(props) => (props.size ? sizes[props.size] : "")}
@@ -28,7 +33,11 @@ const ButtonStyle = styled.button`
       ? blueBtn
       : css`
           color: var(--black);
-          background-color: var(--blue-50);
+          background-color: var(--white);
+          border: 1.2px solid var(--silver-100);
+          &:hover {
+            background-color: var(--silver-50);
+          }
         `}
 `;
 
