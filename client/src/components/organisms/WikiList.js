@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Wiki from "../atoms/Wiki";
 
@@ -15,13 +16,15 @@ function WikiList({ wikiList }) {
     <WikiWrapper>
       {wikiList &&
         wikiList.map((wiki) => (
-          <Wiki
-            key={wiki.id}
-            id={wiki.id}
-            title={wiki.title}
-            createdAt={wiki.createdAt}
-            content={wiki.content}
-          />
+          <Link to={`/${encodeURIComponent(wiki.title)}`}>
+            <Wiki
+              key={wiki.id}
+              id={wiki.id}
+              title={wiki.title}
+              createdAt={wiki.createdAt}
+              content={wiki.content}
+            />
+          </Link>
         ))}
     </WikiWrapper>
   );
