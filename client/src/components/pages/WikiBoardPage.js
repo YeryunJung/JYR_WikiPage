@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "../organisms/Header";
 import Button from "../atoms/Button";
 import WikiList from "../organisms/WikiList";
-import PagenationButton from "../atoms/PagenationButton";
+import PaginationButton from "../atoms/PaginationButton";
+import { getWikiList } from "../../api/getWiki";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -19,9 +20,25 @@ const BtnWrapper = styled.div`
 `;
 
 function WikiBoardPage() {
+  const [wikiList, setWikiList] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const limitPerPage = 5;
   // const totalPageNum = Math.ceil(wikies.length / limitPerPage);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getWikiList();
+        setWikiList(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(wikiList);
 
   return (
     <Wrapper>
@@ -35,7 +52,7 @@ function WikiBoardPage() {
       {/* 위키 목록 */}
       <WikiList />
       {/* 페이지네이션 */}
-      <PagenationButton />
+      <PaginationButton />
     </Wrapper>
   );
 }

@@ -10,7 +10,7 @@ const WikiWrapper = styled.ul`
   padding: 0;
 `;
 
-function WikiList() {
+function WikiList({wikiList}) {
   return (
     <WikiWrapper>
       <Wiki></Wiki>
