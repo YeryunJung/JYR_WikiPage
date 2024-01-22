@@ -28,19 +28,11 @@ const PageBtn = styled.button`
   }
 `;
 
-const Wrapper = styled.footer`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-function PaginationButton() {
+function PaginationButton({ pageNum }) {
   return (
-    <Wrapper>
-      <PageBtn>1</PageBtn>
-      <PageBtn>2</PageBtn>
-      <PageBtn>3</PageBtn>
-    </Wrapper>
+    <>
+      <PageBtn>{pageNum}</PageBtn>
+    </>
   );
 }
 
