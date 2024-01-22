@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../organisms/Header";
 import Button from "../atoms/Button";
 import WikiList from "../organisms/WikiList";
 import PaginationBox from "../organisms/PaginationBox";
 import { getWikiList } from "../../api/getWikiList";
-import { limit } from "firebase/firestore";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -59,9 +59,11 @@ function WikiBoardPage() {
       <Header />
       {/* 새 위키 추가 버튼 */}
       <BtnWrapper>
-        <Button size="big" color="blueBtn">
-          위키 추가하기
-        </Button>
+        <Link to="/write">
+          <Button size="big" color="blueBtn">
+            위키 추가하기
+          </Button>
+        </Link>
       </BtnWrapper>
       {/* 위키 목록 */}
       <WikiList wikiList={currentWikies} />

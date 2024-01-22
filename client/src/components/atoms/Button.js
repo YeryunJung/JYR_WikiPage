@@ -26,6 +26,7 @@ const sizes = { big, normal };
 const ButtonStyle = styled.button`
   border-radius: 20px;
   border: none;
+  cursor: pointer;
   ${fonts.btnText}
   ${(props) => (props.size ? sizes[props.size] : "")}
   ${(props) =>
