@@ -1,6 +1,8 @@
-import styled, { css } from "styled-components";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 import * as fonts from "../../styles/font";
 import Button from "../atoms/Button";
+import { postWiki } from "../../api/postWiki";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -63,13 +65,52 @@ const BtnWrapper = styled.div`
 `;
 
 function NewWikiPostPage() {
+  const [wikiPost, setWikiPost] = useState({
+    title: "",
+    createdAt: null,
+    content: "",
+  });
+
+  function handleContentChange(e) {
+    const newContent = e.target.value;
+    if (newContent.length > 300) {
+      alert("300자를 초과했습니다!");
+      return;
+    }
+
+    setWikiPost((prev) => ({ ...prev, content: newContent }));
+  }
+
+  const handlePost = async () => {
+    if (wikiPost.title === "") {
+      alert("제목을 작성해주세요.");
+      return;
+    }
+
+    if (wikiPost.content === "") {
+      alert("본문을 작성해주세요.");
+      return;
+    }
+
+    await postWiki(wikiPost);
+  };
+
   return (
     <Wrapper>
-      <PostTitle placeholder="강의 제목을 입력해주세요." />
-      <PostContent placeholder="- 타 위키 게시글 제목이 존재할 경우 자동으로 하이퍼링크가 연결됩니다." />
+      <PostTitle
+        placeholder="강의 제목을 입력해주세요."
+        onChange={(e) =>
+          setWikiPost((prev) => ({ ...prev, title: e.target.value }))
+        }
+      />
+      <PostContent
+        placeholder="- 타 위키 게시글 제목이 존재할 경우 자동으로 하이퍼링크가 연결됩니다."
+        onChange={handleContentChange}
+        value={wikiPost.content}
+      />
       <BtnWrapper>
         <Button size="normal">취소</Button>
-        <Button size="normal" color="blueBtn">
+        <Button size="normal" color="blueBtn" onClick={handlePost}>
           등록
         </Button>
       </BtnWrapper>

@@ -4,7 +4,7 @@ import Header from "../organisms/Header";
 import Button from "../atoms/Button";
 import WikiList from "../organisms/WikiList";
 import PaginationBox from "../organisms/PaginationBox";
-import { getWikiList } from "../../api/getWiki";
+import { getWikiList } from "../../api/getWikiList";
 import { limit } from "firebase/firestore";
 
 const Wrapper = styled.div`
