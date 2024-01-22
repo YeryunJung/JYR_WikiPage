@@ -28,7 +28,7 @@ const PageBtn = styled.button`
   }
 `;
 
-function PagenationButton() {
+function PaginationButton() {
   return (
     <>
       <PageBtn>1</PageBtn>
@@ -38,4 +38,4 @@ function PagenationButton() {
   );
 }
 
-export default PagenationButton;
+export default PaginationButton;
