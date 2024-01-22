@@ -10,14 +10,19 @@ const WikiWrapper = styled.ul`
   padding: 0;
 `;
 
-function WikiList({wikiList}) {
+function WikiList({ wikiList }) {
   return (
     <WikiWrapper>
-      <Wiki></Wiki>
-      <Wiki></Wiki>
-      <Wiki></Wiki>
-      <Wiki></Wiki>
-      <Wiki></Wiki>
+      {wikiList &&
+        wikiList.map((wiki) => (
+          <Wiki
+            key={wiki.id}
+            id={wiki.id}
+            title={wiki.title}
+            createdAt={wiki.createdAt}
+            content={wiki.content}
+          />
+        ))}
     </WikiWrapper>
   );
 }

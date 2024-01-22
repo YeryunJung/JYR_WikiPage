@@ -22,11 +22,11 @@ const PostDate = styled.div`
   color: var(--silver-600);
 `;
 
-function Wiki() {
+function Wiki({ id, title, createdAt, content }) {
   return (
     <Post>
-      <PostTitle>파이썬 기초 강좌</PostTitle>
-      <PostDate>2023-12-23</PostDate>
+      <PostTitle>{title}</PostTitle>
+      <PostDate>{createdAt}</PostDate>
     </Post>
   );
 }

@@ -50,7 +50,7 @@ function WikiBoardPage() {
         </Button>
       </BtnWrapper>
       {/* 위키 목록 */}
-      <WikiList />
+      <WikiList wikiList={wikiList} />
       {/* 페이지네이션 */}
       <PaginationButton />
     </Wrapper>
