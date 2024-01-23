@@ -7,8 +7,7 @@
 [ 👉 **<u>배포 링크</u>**](https://wikipage-board.web.app)
 
 ### 🛠 기술 스택
-
-React
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
 
 ### 💡 기능 설명
 
@@ -49,13 +48,13 @@ cd client
 npm install
 ```
 
-- 로컬 서버를 실행합니다.<br />웹 브라우저에서 http://localhost:3000으로 접속하여 프로젝트를 확인합니다.
+- 로컬 서버를 실행합니다.<br />웹 브라우저에서 http://localhost:3000 으로 접속하여 프로젝트를 확인합니다.
 
 ```
 npm run start
 ```
 
-- 프로젝트를 빌드합니다
+- 프로젝트를 빌드합니다.
 
 ```
 npm run build
