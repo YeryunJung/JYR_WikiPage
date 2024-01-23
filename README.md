@@ -7,6 +7,7 @@
 [ 👉 **<u>배포 링크</u>**](https://wikipage-board.web.app)
 
 ### 🛠 기술 스택
+
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
 
 ### 💡 기능 설명
@@ -60,3 +61,16 @@ npm run start
 ```
 npm run build
 ```
+
+### ⚙️ 프로젝트 환경변수
+
+이 프로젝트는 Firebase를 사용합니다.
+
+- 환경변수 목록
+  - `API_KEY`: Firebase 프로젝트의 API 키입니다.
+  - `AUTH_DOMAIN`: Firebase 프로젝트의 인증 도메인입니다.
+  - `DATABASE_URL`: Firebase Realtime Database의 URL입니다.
+  - `PROJECT_ID`: Firebase 프로젝트의 ID입니다.
+  - `STORAGE_BUCKET`: Firebase Storage의 버킷 이름입니다.
+  - `MESSAGING_SENDER_ID`: Firebase Cloud Messaging의 Sender ID입니다.
+  - `APP_ID`: Firebase 프로젝트의 앱 ID입니다.
