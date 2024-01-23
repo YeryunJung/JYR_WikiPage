@@ -1,0 +1,138 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import styled from "styled-components";
+import * as fonts from "../../styles/font";
+import Button from "../atoms/Button";
+import { getWikiDetail } from "../../api/getWikiDetail";
+import { postWiki } from "../../api/postWiki";
+
+const Wrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+`;
+
+const PostTitle = styled.input`
+  ${fonts.title}
+  width: 60%;
+  height: 45px;
+  border: none;
+  padding: 5px;
+  margin: 10px 10px 20px 10px;
+  color: var(--black);
+  text-align: left;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: var(--silver-300);
+  }
+`;
+
+const PostContent = styled.textarea`
+  ${fonts.small}
+  width: 60%;
+  height: 500px;
+  border: 1.5px solid var(--silver-100);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  color: var(--black);
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: var(--silver-300);
+  }
+`;
+
+const BtnWrapper = styled.div`
+  width: 60%;
+  height: 70px;
+  display: flex;
+  justify-content: right;
+  text-align: center;
+  margin: 5px 10px;
+
+  & > button {
+    margin-left: 10px;
+  }
+`;
+
+function WikiUpdatePage() {
+  const { title } = useParams();
+  const [wikiPost, setWikiPost] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getWikiDetail(title);
+        setWikiPost(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [title]);
+
+  function handleContentChange(e) {
+    const newContent = e.target.value;
+    if (newContent.length > 300) {
+      alert("300자를 초과했습니다!");
+      return;
+    }
+
+    setWikiPost((prev) => ({ ...prev, content: newContent }));
+  }
+
+  const handlePost = async () => {
+    if (wikiPost.title === "") {
+      alert("제목을 작성해주세요.");
+      return;
+    }
+
+    if (wikiPost.content === "") {
+      alert("본문을 작성해주세요.");
+      return;
+    }
+
+    await postWiki(wikiPost);
+  };
+
+  return (
+    <Wrapper>
+      {wikiPost && (
+        <>
+          <PostTitle
+            placeholder="강의 제목을 입력해주세요."
+            onChange={(e) =>
+              setWikiPost((prev) => ({ ...prev, title: e.target.value }))
+            }
+            value={wikiPost.title}
+          />
+          <PostContent
+            placeholder="- 타 위키 게시글 제목이 존재할 경우 자동으로 하이퍼링크가 연결됩니다."
+            onChange={handleContentChange}
+            value={wikiPost.content}
+          />
+          <BtnWrapper>
+            <Button size="normal">취소</Button>
+            <Button size="normal" color="blueBtn" onClick={handlePost}>
+              등록
+            </Button>
+          </BtnWrapper>
+        </>
+      )}
+    </Wrapper>
+  );
+}
+
+export default WikiUpdatePage;

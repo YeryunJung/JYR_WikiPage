@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
 import { getWikiDetail } from "../../api/getWikiDetail";
@@ -79,9 +79,11 @@ function WikiDetailPage() {
           <PostTitle>{wiki.title}</PostTitle>
           <PostContent>{wiki.content}</PostContent>
           <BtnWrapper>
-            <Button size="normal" color="blueBtn" onClick={handleUpdate}>
-              수정
-            </Button>
+            <Link to={`/update/${encodeURIComponent(wiki.title)}`}>
+              <Button size="normal" color="blueBtn">
+                수정
+              </Button>
+            </Link>
           </BtnWrapper>
         </>
       ) : (

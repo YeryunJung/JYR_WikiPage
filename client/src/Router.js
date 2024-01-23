@@ -3,6 +3,7 @@ import App from "./App";
 import WikiBoardPage from "./components/pages/WikiBoardPage";
 import NewWikiPostPage from "./components/pages/NewWikiPostPage";
 import WikiDetailPage from "./components/pages/WikiDetailPage";
+import WikiUpdatePage from "./components/pages/WikiUpdatePage";
 import NotFoundPage from "./components/pages/NotFoundPage";
 
 const Router = createBrowserRouter([
@@ -21,6 +22,10 @@ const Router = createBrowserRouter([
       {
         path: "/:title",
         element: <WikiDetailPage />,
+      },
+      {
+        path: "/update/:title",
+        element: <WikiUpdatePage />,
       },
     ],
     errorElement: <NotFoundPage />,
