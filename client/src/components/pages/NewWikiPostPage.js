@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
@@ -103,7 +103,14 @@ function NewWikiPostPage() {
       return;
     }
 
-    await postWiki(wikiPost);
+    try {
+      await postWiki(wikiPost);
+      alert("성공적으로 위키가 등록되었습니다!");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("위키 등록에 에러가 발생했습니다! 다시 시도해 주세요.");
+    }
   };
 
   return (

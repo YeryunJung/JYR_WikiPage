@@ -14,7 +14,7 @@ const WikiWrapper = styled.ul`
 function WikiList({ wikiList }) {
   return (
     <WikiWrapper>
-      {wikiList &&
+      {wikiList ? (
         wikiList.map((wiki) => (
           <Link key={wiki.id} to={`/${encodeURIComponent(wiki.title)}`}>
             <Wiki
@@ -25,7 +25,10 @@ function WikiList({ wikiList }) {
               content={wiki.content}
             />
           </Link>
-        ))}
+        ))
+      ) : (
+        <p>아직 위키가 등록되지 않았습니다. 위키를 추가해보세요!</p>
+      )}
     </WikiWrapper>
   );
 }

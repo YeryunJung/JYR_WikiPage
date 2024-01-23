@@ -120,8 +120,13 @@ function WikiUpdatePage() {
 
     try {
       await updateWikiDetail(wikiPost.id, wikiPost);
+      alert("수정이 완료되었습니다.");
       navigate(`/${encodeURIComponent(wikiPost.title)}`);
-    } catch (error) {}
+    } catch (error) {
+      alert("수정이 정상적으로 완료되지 않았습니다. 다시 시도해주세요");
+      console.error(error);
+      navigate(`/${encodeURIComponent(wikiPost.title)}`);
+    }
   };
 
   return (
@@ -146,7 +151,7 @@ function WikiUpdatePage() {
               취소
             </Button>
             <Button size="normal" color="blueBtn" onClick={handleUpdate}>
-              등록
+              수정 완료
             </Button>
           </BtnWrapper>
         </>

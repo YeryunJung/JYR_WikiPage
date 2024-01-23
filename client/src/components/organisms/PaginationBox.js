@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import PaginationButton from "../atoms/PaginationButton";
 import { ReactComponent as LeftArrow } from "../../icons/left-pagination-arrow.svg";
 import { ReactComponent as RightArrow } from "../../icons/right-pagination-arrow.svg";
