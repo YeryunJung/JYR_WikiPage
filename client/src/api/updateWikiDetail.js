@@ -9,7 +9,7 @@ export const updateWikiDetail = async (id, newWiki) => {
   const wikiCollectionRef = collection(db, "wikies");
 
   try {
-    await setDoc(doc(wikiCollectionRef, id), newWiki); // 옛날 제목 아이디에 내용만 바뀜
+    await setDoc(doc(wikiCollectionRef, id), newWiki);
   } catch (error) {
     console.error(error);
     throw error;

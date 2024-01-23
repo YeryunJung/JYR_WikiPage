@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
 import Button from "../atoms/Button";
 import { getWikiDetail } from "../../api/getWikiDetail";
+import { getWikiTitleList } from "../../api/getWikiTitleList";
 import { updateWikiDetail } from "../../api/updateWikiDetail";
 
 const Wrapper = styled.div`
@@ -72,13 +73,12 @@ function WikiUpdatePage() {
   const navigate = useNavigate();
   const { title } = useParams();
   const [wikiPost, setWikiPost] = useState(null);
-  const titleRef = useRef();
+  const [wikiTitleList, setWikiTitleList] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getWikiDetail(title);
-        titleRef.current && titleRef.current.focus();
         setWikiPost(data);
       } catch (error) {
         console.error(error);
@@ -86,6 +86,17 @@ function WikiUpdatePage() {
     };
 
     fetchData();
+
+    const fetchTitleList = async () => {
+      try {
+        const titleList = await getWikiTitleList(title);
+        setWikiTitleList(titleList);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTitleList();
   }, [title]);
 
   function handleContentChange(e) {
@@ -108,6 +119,13 @@ function WikiUpdatePage() {
   };
 
   const handleUpdate = async () => {
+    if (wikiTitleList.includes(wikiPost.title)) {
+      alert(
+        "이미 등록된 위키 제목을 사용하실 수 없습니다. 제목을 변경해주세요."
+      );
+      return;
+    }
+
     if (wikiPost.title === "") {
       alert("제목을 작성해주세요.");
       return;
@@ -139,7 +157,6 @@ function WikiUpdatePage() {
               setWikiPost((prev) => ({ ...prev, title: e.target.value }))
             }
             value={wikiPost.title}
-            ref={titleRef}
           />
           <PostContent
             placeholder="- 타 위키 게시글 제목이 존재할 경우 자동으로 하이퍼링크가 연결됩니다."

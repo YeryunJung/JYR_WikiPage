@@ -16,7 +16,6 @@ function WikiList({ wikiList }) {
     ? [...wikiList].sort((a, b) => b.createdAt - a.createdAt)
     : null;
 
-  console.log(wikiList);
   return (
     <WikiWrapper>
       {latestWikiList ? (

@@ -73,7 +73,6 @@ function NewWikiPostPage() {
     createdAt: null,
     content: "",
   });
-  const [wikiTitleList, setWikiTitleList] = useState(null);
 
   function handleContentChange(e) {
     const newContent = e.target.value;
@@ -107,7 +106,6 @@ function NewWikiPostPage() {
 
     try {
       const titleList = await getWikiTitleList();
-      setWikiTitleList(titleList);
 
       if (titleList) {
         // 중복 제목 확인

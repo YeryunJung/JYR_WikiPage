@@ -6,7 +6,6 @@ const StyledLink = styled(Link)`
 `;
 
 const AutoHyperlinks = ({ text, linkArray }) => {
-  linkArray.forEach((el) => console.log(decodeURIComponent(el)));
 
   const createLink = (word, index) => {
     if (linkArray.includes(word)) {

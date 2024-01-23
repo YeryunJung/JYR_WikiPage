@@ -65,8 +65,11 @@ function WikiDetailPage() {
       try {
         const data = await getWikiDetail(title);
         const titleData = await getWikiTitleList(title);
+        const encodedTitle = titleData.map((title) =>
+          encodeURIComponent(title)
+        );
         setWiki(data);
-        setWikiTitleList(titleData);
+        setWikiTitleList(encodedTitle);
       } catch (error) {
         console.error(error);
       }

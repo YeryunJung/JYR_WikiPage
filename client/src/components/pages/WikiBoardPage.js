@@ -61,8 +61,6 @@ function WikiBoardPage() {
     }
   }, [currentPage, wikiList]);
 
-  console.log(totalPageNum);
-
   return (
     <Wrapper>
       <Header />

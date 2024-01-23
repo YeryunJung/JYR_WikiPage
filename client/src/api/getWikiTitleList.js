@@ -5,10 +5,11 @@ export const getWikiTitleList = async (thisTitle) => {
   const wikiCollectionRef = collection(db, "wikies");
   try {
     const data = await getDocs(wikiCollectionRef);
+    // thisTitle 파라미터를 전달하면 해당 제목을 제외한 글 제목을 리턴
     if (thisTitle) {
       const titleList = data.docs
-        .map((doc) => encodeURIComponent(doc.data().title))
-        .filter((title) => title !== encodeURIComponent(thisTitle));
+        .map((doc) => doc.data().title)
+        .filter((title) => title !== thisTitle);
       return titleList;
     } else {
       const titleList = data.docs.map((doc) => {
