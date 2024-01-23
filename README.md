@@ -66,11 +66,11 @@ npm run build
 
 이 프로젝트는 Firebase를 사용합니다.
 
-- 환경변수 목록
-  - `API_KEY`: Firebase 프로젝트의 API 키입니다.
-  - `AUTH_DOMAIN`: Firebase 프로젝트의 인증 도메인입니다.
-  - `DATABASE_URL`: Firebase Realtime Database의 URL입니다.
-  - `PROJECT_ID`: Firebase 프로젝트의 ID입니다.
-  - `STORAGE_BUCKET`: Firebase Storage의 버킷 이름입니다.
-  - `MESSAGING_SENDER_ID`: Firebase Cloud Messaging의 Sender ID입니다.
-  - `APP_ID`: Firebase 프로젝트의 앱 ID입니다.
+- 사용한 환경변수 목록
+  - `REACT_APP_FIREBASE_API_KEY`: Firebase 프로젝트의 API 키입니다.
+  - `REACT_APP_FIREBASE_AUTH_DOMAIN`: Firebase 프로젝트의 인증 도메인입니다.
+  - `REACT_APP_FIREBASE_PROJECT_ID`: Firebase 프로젝트의 ID입니다.
+  - `REACT_APP_FIREBASE_STORAGE_BUCKET`: Firebase Storage의 버킷 이름입니다.
+  - `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`: Firebase Cloud Messaging의 Sender ID입니다
+  - `REACT_APP_FIREBASE_APP_ID`: Firebase 프로젝트의 앱 ID입니다.
+  - `REACT_APP_FIREBASE_MEASUREMENT_ID`: Firebase 프로젝트의 측정 ID입니다.
