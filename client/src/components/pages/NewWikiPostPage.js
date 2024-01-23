@@ -4,6 +4,7 @@ import styled from "styled-components";
 import * as fonts from "../../styles/font";
 import Button from "../atoms/Button";
 import { postWiki } from "../../api/postWiki";
+import { getWikiTitleList } from "../../api/getWikiTitleList";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -72,6 +73,7 @@ function NewWikiPostPage() {
     createdAt: null,
     content: "",
   });
+  const [wikiTitleList, setWikiTitleList] = useState(null);
 
   function handleContentChange(e) {
     const newContent = e.target.value;
@@ -104,12 +106,30 @@ function NewWikiPostPage() {
     }
 
     try {
-      await postWiki(wikiPost);
-      alert("성공적으로 위키가 등록되었습니다!");
-      navigate("/");
+      const titleList = await getWikiTitleList();
+      setWikiTitleList(titleList);
+
+      if (titleList) {
+        // 중복 제목 확인
+        if (titleList.includes(wikiPost.title)) {
+          alert(
+            "이미 등록된 위키 제목을 사용하실 수 없습니다. 제목을 변경해주세요."
+          );
+          return;
+        } else {
+          try {
+            await postWiki(wikiPost);
+            alert("성공적으로 위키가 등록되었습니다!");
+            navigate("/");
+          } catch (error) {
+            console.error(error);
+            alert("위키 등록에 에러가 발생했습니다! 다시 시도해 주세요.");
+          }
+        }
+      }
     } catch (error) {
       console.error(error);
-      alert("위키 등록에 에러가 발생했습니다! 다시 시도해 주세요.");
+      alert("위키 글제목 중복확인에 실패했습니다! 다시 시도해 주세요.");
     }
   };
 
