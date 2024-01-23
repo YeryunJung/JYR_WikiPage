@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
 import Button from "../atoms/Button";
@@ -65,6 +66,7 @@ const BtnWrapper = styled.div`
 `;
 
 function NewWikiPostPage() {
+  const navigate = useNavigate();
   const [wikiPost, setWikiPost] = useState({
     title: "",
     createdAt: null,
@@ -80,6 +82,15 @@ function NewWikiPostPage() {
 
     setWikiPost((prev) => ({ ...prev, content: newContent }));
   }
+
+  const handleCancel = () => {
+    const confirmed = window.confirm(
+      "작성을 취소하고 목록으로 돌아가시겠습니까?"
+    );
+    if (confirmed) {
+      navigate(`/`);
+    }
+  };
 
   const handlePost = async () => {
     if (wikiPost.title === "") {
@@ -109,7 +120,9 @@ function NewWikiPostPage() {
         value={wikiPost.content}
       />
       <BtnWrapper>
-        <Button size="normal">취소</Button>
+        <Button size="normal" onClick={handleCancel}>
+          취소
+        </Button>
         <Button size="normal" color="blueBtn" onClick={handlePost}>
           등록
         </Button>

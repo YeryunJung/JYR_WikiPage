@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   text-align: center;
   margin: auto;
   overflow: hidden;
+  background-color: var(--silver-50);
 `;
 
 const PostTitle = styled.input`
@@ -25,6 +26,7 @@ const PostTitle = styled.input`
   border: none;
   padding: 5px;
   margin: 10px;
+  border-radius: 10px;
   color: var(--black);
   text-align: left;
   &:focus {
@@ -39,7 +41,7 @@ const PostContent = styled.textarea`
   ${fonts.small}
   width: 60%;
   height: 500px;
-  border: 1.5px solid var(--silver-100);
+  border: none;
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
@@ -96,6 +98,15 @@ function WikiUpdatePage() {
     setWikiPost((prev) => ({ ...prev, content: newContent }));
   }
 
+  const handleCancel = () => {
+    const confirmed = window.confirm(
+      "수정을 취소하고 게시글로 돌아가시겠습니까?"
+    );
+    if (confirmed) {
+      navigate(`/${encodeURIComponent(wikiPost.title)}`);
+    }
+  };
+
   const handleUpdate = async () => {
     if (wikiPost.title === "") {
       alert("제목을 작성해주세요.");
@@ -131,9 +142,11 @@ function WikiUpdatePage() {
             value={wikiPost.content}
           />
           <BtnWrapper>
-            <Button size="normal">취소</Button>
+            <Button size="normal" onClick={handleCancel}>
+              취소
+            </Button>
             <Button size="normal" color="blueBtn" onClick={handleUpdate}>
-              수정하기
+              등록
             </Button>
           </BtnWrapper>
         </>

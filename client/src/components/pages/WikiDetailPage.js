@@ -48,7 +48,7 @@ const BtnWrapper = styled.div`
   text-align: center;
   margin: 5px 10px;
 
-  & > button {
+  & > a {
     margin-left: 10px;
   }
 `;
@@ -77,6 +77,9 @@ function WikiDetailPage() {
           <PostTitle>{wiki.title}</PostTitle>
           <PostContent>{wiki.content}</PostContent>
           <BtnWrapper>
+            <Link to={"/"}>
+              <Button size="normal">목록으로</Button>
+            </Link>
             <Link to={`/update/${encodeURIComponent(wiki.title)}`}>
               <Button size="normal" color="blueBtn">
                 수정
