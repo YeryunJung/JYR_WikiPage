@@ -20,6 +20,15 @@ const BtnWrapper = styled.div`
   align-items: center;
 `;
 
+const PaginationWrapper = styled.div`
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 15px;
+`;
+
 function WikiBoardPage() {
   const [wikiList, setWikiList] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,12 +77,14 @@ function WikiBoardPage() {
       {/* 위키 목록 */}
       <WikiList wikiList={currentWikies} />
       {/* 페이지네이션 */}
-      <PaginationBox
-        totalPageNum={totalPageNum}
-        limitPerPage={limitPerPage}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      <PaginationWrapper>
+        <PaginationBox
+          totalPageNum={totalPageNum}
+          limitPerPage={limitPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      </PaginationWrapper>
     </Wrapper>
   );
 }

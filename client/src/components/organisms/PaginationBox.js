@@ -3,13 +3,6 @@ import PaginationButton from "../atoms/PaginationButton";
 import { ReactComponent as LeftArrow } from "../../icons/left-pagination-arrow.svg";
 import { ReactComponent as RightArrow } from "../../icons/right-pagination-arrow.svg";
 
-const Wrapper = styled.div`
-  width: 100%;
-  min-height: 50px;
-  display: flex;
-  justify-content: center;
-`;
-
 function PaginationBox({
   totalPageNum,
   limitPerPage,
@@ -35,7 +28,7 @@ function PaginationBox({
   }
 
   return (
-    <Wrapper>
+    <>
       <PaginationButton
         pageNum={<LeftArrow />}
         noActive
@@ -57,7 +50,7 @@ function PaginationBox({
         onClick={goToNextPage}
         disabled={currentPage === totalPageNum}
       />
-    </Wrapper>
+    </>
   );
 }
 
