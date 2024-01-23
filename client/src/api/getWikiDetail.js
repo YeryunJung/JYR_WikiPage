@@ -10,7 +10,7 @@ export const getWikiDetail = async (title) => {
 
     if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
-      return doc.data();
+      return { id: doc.id, ...doc.data() };
     } else {
       console.log("찾은 데이터 없음");
       return null;

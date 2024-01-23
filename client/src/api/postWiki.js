@@ -11,7 +11,7 @@ export const postWiki = async (post) => {
   };
 
   try {
-    await setDoc(doc(wikiCollectionRef, wikiPost.title), wikiPost);
+    await setDoc(doc(wikiCollectionRef), wikiPost);
   } catch (error) {
     console.error(error);
   }
