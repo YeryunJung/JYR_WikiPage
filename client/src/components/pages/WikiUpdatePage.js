@@ -114,19 +114,21 @@ function WikiUpdatePage() {
       "수정을 취소하고 게시글로 돌아가시겠습니까?"
     );
     if (confirmed) {
-      navigate(`/${encodeURIComponent(wikiPost.title)}`);
+      navigate(`/${encodeURIComponent(title)}`);
     }
   };
 
   const handleUpdate = async () => {
-    if (wikiTitleList.includes(wikiPost.title)) {
+    const trimmedTitle = wikiPost.title.trim();
+
+    if (wikiTitleList.includes(trimmedTitle)) {
       alert(
         "이미 등록된 위키 제목을 사용하실 수 없습니다. 제목을 변경해주세요."
       );
       return;
     }
 
-    if (wikiPost.title === "") {
+    if (trimmedTitle === "") {
       alert("제목을 작성해주세요.");
       return;
     }
@@ -137,13 +139,13 @@ function WikiUpdatePage() {
     }
 
     try {
-      await updateWikiDetail(wikiPost.id, wikiPost);
+      await updateWikiDetail(wikiPost.id, { ...wikiPost, title: trimmedTitle });
       alert("수정이 완료되었습니다.");
-      navigate(`/${encodeURIComponent(wikiPost.title)}`);
+      navigate(`/${encodeURIComponent(trimmedTitle)}`);
     } catch (error) {
       alert("수정이 정상적으로 완료되지 않았습니다. 다시 시도해주세요");
       console.error(error);
-      navigate(`/${encodeURIComponent(wikiPost.title)}`);
+      navigate(`/${encodeURIComponent(trimmedTitle)}`);
     }
   };
 

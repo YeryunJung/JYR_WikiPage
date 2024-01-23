@@ -94,7 +94,9 @@ function NewWikiPostPage() {
   };
 
   const handlePost = async () => {
-    if (wikiPost.title === "") {
+    const trimmedTitle = wikiPost.title.trim();
+
+    if (trimmedTitle === "") {
       alert("제목을 작성해주세요.");
       return;
     }
@@ -109,14 +111,14 @@ function NewWikiPostPage() {
 
       if (titleList) {
         // 중복 제목 확인
-        if (titleList.includes(wikiPost.title)) {
+        if (titleList.includes(trimmedTitle)) {
           alert(
             "이미 등록된 위키 제목을 사용하실 수 없습니다. 제목을 변경해주세요."
           );
           return;
         } else {
           try {
-            await postWiki(wikiPost);
+            await postWiki({ ...wikiPost, title: trimmedTitle });
             alert("성공적으로 위키가 등록되었습니다!");
             navigate("/");
           } catch (error) {
