@@ -4,8 +4,8 @@ import styled from "styled-components";
 import * as fonts from "../../styles/font";
 import Button from "../atoms/Button";
 import { getWikiDetail } from "../../api/getWikiDetail";
-import { getWikiList } from "../../api/getWikiList";
 import { getWikiTitleList } from "../../api/getWikiTitleList";
+import AutoHyperlinks from "../../utils/AutoHyperlinks";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -79,10 +79,15 @@ function WikiDetailPage() {
 
   return (
     <Wrapper>
-      {wiki ? (
+      {wiki && wikiTitleList ? (
         <>
           <PostTitle>{wiki.title}</PostTitle>
-          <PostContent>{wiki.content}</PostContent>
+          <PostContent>
+            <AutoHyperlinks
+              text={encodeURIComponent(wiki.content)}
+              linkArray={wikiTitleList}
+            />
+          </PostContent>
           <BtnWrapper>
             <Link to={"/"}>
               <Button size="normal">목록으로</Button>

@@ -6,8 +6,8 @@ export const getWikiTitleList = async (thisTitle) => {
   try {
     const data = await getDocs(wikiCollectionRef);
     const titleList = data.docs
-      .map((doc) => doc.data().title)
-      .filter((title) => title !== thisTitle);
+      .map((doc) => encodeURIComponent(doc.data().title))
+      .filter((title) => title !== encodeURIComponent(thisTitle));
     return titleList;
   } catch (error) {
     console.error(error);
