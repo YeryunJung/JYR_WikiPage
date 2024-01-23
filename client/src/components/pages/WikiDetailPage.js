@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
-import { getWikiDetail } from "../../api/getWikiDetail";
 import Button from "../atoms/Button";
+import { getWikiDetail } from "../../api/getWikiDetail";
+import { getWikiList } from "../../api/getWikiList";
+import { getWikiTitleList } from "../../api/getWikiTitleList";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -56,12 +58,15 @@ const BtnWrapper = styled.div`
 function WikiDetailPage() {
   const { title } = useParams();
   const [wiki, setWiki] = useState(null);
+  const [wikiTitleList, setWikiTitleList] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getWikiDetail(title);
+        const titleData = await getWikiTitleList(title);
         setWiki(data);
+        setWikiTitleList(titleData);
       } catch (error) {
         console.error(error);
       }
@@ -69,6 +74,8 @@ function WikiDetailPage() {
 
     fetchData();
   }, [title]);
+
+  console.log("wikiTitleList", wikiTitleList);
 
   return (
     <Wrapper>
