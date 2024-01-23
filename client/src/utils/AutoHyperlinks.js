@@ -6,6 +6,8 @@ const StyledLink = styled(Link)`
 `;
 
 const AutoHyperlinks = ({ text, linkArray }) => {
+  linkArray.forEach((el) => console.log(decodeURIComponent(el)));
+
   const createLink = (word, index) => {
     if (linkArray.includes(word)) {
       return (
@@ -16,9 +18,7 @@ const AutoHyperlinks = ({ text, linkArray }) => {
   };
 
   const pattern = new RegExp(`\\b(${linkArray.join("|")})\\b`, "gi");
-
   const splitText = text.split(pattern);
-  console.log(decodeURIComponent(splitText.length));
 
   return <>{splitText.map((word, index) => createLink(word, index))}</>;
 };

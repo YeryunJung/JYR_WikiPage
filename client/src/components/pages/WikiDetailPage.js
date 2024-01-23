@@ -75,8 +75,6 @@ function WikiDetailPage() {
     fetchData();
   }, [title]);
 
-  console.log("wikiTitleList", wikiTitleList);
-
   return (
     <Wrapper>
       {wiki && wikiTitleList ? (

@@ -75,8 +75,8 @@ function NewWikiPostPage() {
 
   function handleContentChange(e) {
     const newContent = e.target.value;
-    if (newContent.length > 300) {
-      alert("300자를 초과했습니다!");
+    if (newContent.length > 500) {
+      alert("500자를 초과했습니다!");
       return;
     }
 
