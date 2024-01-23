@@ -16,7 +16,7 @@ function WikiList({ wikiList }) {
     <WikiWrapper>
       {wikiList &&
         wikiList.map((wiki) => (
-          <Link to={`/${encodeURIComponent(wiki.title)}`}>
+          <Link key={wiki.id} to={`/${encodeURIComponent(wiki.title)}`}>
             <Wiki
               key={wiki.id}
               id={wiki.id}

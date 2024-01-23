@@ -1,5 +1,5 @@
 import { Timestamp } from "@firebase/firestore";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 export const postWiki = async (post) => {
@@ -11,7 +11,7 @@ export const postWiki = async (post) => {
   };
 
   try {
-    await addDoc(wikiCollectionRef, wikiPost);
+    await setDoc(doc(wikiCollectionRef, wikiPost.title), wikiPost);
   } catch (error) {
     console.error(error);
   }

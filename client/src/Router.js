@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import WikiBoardPage from "./components/pages/WikiBoardPage";
 import NewWikiPostPage from "./components/pages/NewWikiPostPage";
+import WikiDetailPage from "./components/pages/WikiDetailPage";
 import NotFoundPage from "./components/pages/NotFoundPage";
 
 const Router = createBrowserRouter([
@@ -16,6 +17,10 @@ const Router = createBrowserRouter([
       {
         path: "/write",
         element: <NewWikiPostPage />,
+      },
+      {
+        path: "/:title",
+        element: <WikiDetailPage />,
       },
     ],
     errorElement: <NotFoundPage />,

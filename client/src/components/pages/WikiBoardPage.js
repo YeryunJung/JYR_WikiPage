@@ -33,7 +33,7 @@ function WikiBoardPage() {
         const data = await getWikiList();
         setWikiList(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
