@@ -7,7 +7,7 @@ const Wrapper = styled.header`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 50px 20px 40px 20px;
+  padding: 40px 10px 30px 10px;
 `;
 
 const SubTitle = styled.div`
