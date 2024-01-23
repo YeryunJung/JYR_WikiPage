@@ -20,10 +20,10 @@ const Wrapper = styled.div`
 const PostTitle = styled.h1`
   ${fonts.title}
   width: 60%;
-  height: 45px;
+  height: 60px;
   border: none;
   padding: 5px;
-  margin: 10px 10px 20px 10px;
+  margin: 10px;
   color: var(--black);
   text-align: left;
 `;
@@ -69,8 +69,6 @@ function WikiDetailPage() {
 
     fetchData();
   }, [title]);
-
-  function handleUpdate() {}
 
   return (
     <Wrapper>

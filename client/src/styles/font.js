@@ -9,7 +9,7 @@ export const global = css`
 `;
 
 export const title = css`
-  font-size: 48px;
+  font-size: 44px;
   font-weight: bold;
 `;
 

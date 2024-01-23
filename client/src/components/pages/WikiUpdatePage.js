@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import * as fonts from "../../styles/font";
@@ -21,10 +21,10 @@ const Wrapper = styled.div`
 const PostTitle = styled.input`
   ${fonts.title}
   width: 60%;
-  height: 45px;
+  height: 60px;
   border: none;
   padding: 5px;
-  margin: 10px 10px 20px 10px;
+  margin: 10px;
   color: var(--black);
   text-align: left;
   &:focus {
@@ -69,6 +69,7 @@ const BtnWrapper = styled.div`
 function WikiUpdatePage() {
   const { title } = useParams();
   const [wikiPost, setWikiPost] = useState(null);
+  const titleRef = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +84,10 @@ function WikiUpdatePage() {
     fetchData();
   }, [title]);
 
+  useEffect(() => {
+    titleRef.current && titleRef.current.focus();
+  }, [wikiPost]);
+
   function handleContentChange(e) {
     const newContent = e.target.value;
     if (newContent.length > 300) {
@@ -93,7 +98,7 @@ function WikiUpdatePage() {
     setWikiPost((prev) => ({ ...prev, content: newContent }));
   }
 
-  const handlePost = async () => {
+  const handleUpdate = async () => {
     if (wikiPost.title === "") {
       alert("제목을 작성해주세요.");
       return;
@@ -117,6 +122,7 @@ function WikiUpdatePage() {
               setWikiPost((prev) => ({ ...prev, title: e.target.value }))
             }
             value={wikiPost.title}
+            ref={titleRef}
           />
           <PostContent
             placeholder="- 타 위키 게시글 제목이 존재할 경우 자동으로 하이퍼링크가 연결됩니다."
@@ -125,8 +131,8 @@ function WikiUpdatePage() {
           />
           <BtnWrapper>
             <Button size="normal">취소</Button>
-            <Button size="normal" color="blueBtn" onClick={handlePost}>
-              등록
+            <Button size="normal" color="blueBtn" onClick={handleUpdate}>
+              수정하기
             </Button>
           </BtnWrapper>
         </>
