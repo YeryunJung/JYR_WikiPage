@@ -12,17 +12,25 @@ const WikiWrapper = styled.ul`
 `;
 
 function WikiList({ wikiList }) {
+  const latestWikiList = wikiList
+    ? [...wikiList].sort((a, b) => b.createdAt - a.createdAt)
+    : null;
+
+  console.log(wikiList);
   return (
     <WikiWrapper>
-      {wikiList ? (
-        wikiList.map((wiki) => (
-          <Link key={wiki.id} to={`/${encodeURIComponent(wiki.title)}`}>
+      {latestWikiList ? (
+        latestWikiList.map((latestWikiList) => (
+          <Link
+            key={latestWikiList.id}
+            to={`/${encodeURIComponent(latestWikiList.title)}`}
+          >
             <Wiki
-              key={wiki.id}
-              id={wiki.id}
-              title={wiki.title}
-              createdAt={wiki.createdAt}
-              content={wiki.content}
+              key={latestWikiList.id}
+              id={latestWikiList.id}
+              title={latestWikiList.title}
+              createdAt={latestWikiList.createdAt}
+              content={latestWikiList.content}
             />
           </Link>
         ))

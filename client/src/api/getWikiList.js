@@ -15,7 +15,11 @@ export const getWikiList = async () => {
   const wikiCollectionRef = collection(db, "wikies");
   try {
     const data = await getDocs(wikiCollectionRef);
-    return data.docs.map((doc) => ({
+    // createdAt 기준 최신 순으로 정렬
+    const sortedByTimeData = data.docs.sort(
+      (a, b) => b.data().createdAt - a.data().createdAt
+    );
+    return sortedByTimeData.map((doc) => ({
       ...doc.data(),
       id: doc.id,
       createdAt: timeToString(doc.data().createdAt),
