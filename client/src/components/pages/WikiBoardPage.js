@@ -67,7 +67,7 @@ function WikiBoardPage() {
       {/* 새 위키 추가 버튼 */}
       <BtnWrapper>
         <Link to="/write">
-          <Button size="big" color="blueBtn">
+          <Button size="big" color="blueBtn" test-id="addBtn">
             위키 추가하기
           </Button>
         </Link>

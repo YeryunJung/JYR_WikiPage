@@ -159,11 +159,13 @@ function WikiUpdatePage() {
               setWikiPost((prev) => ({ ...prev, title: e.target.value }))
             }
             value={wikiPost.title}
+            data-cy="updateTitleInput"
           />
           <PostContent
             placeholder="- 타 위키 게시글 제목이 존재할 경우 자동으로 하이퍼링크가 연결됩니다."
             onChange={handleContentChange}
             value={wikiPost.content}
+            data-cy="updateContentTextarea"
           />
           <BtnWrapper>
             <Button size="normal" onClick={handleCancel}>

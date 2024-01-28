@@ -82,8 +82,8 @@ function WikiDetailPage() {
     <Wrapper>
       {wiki && wikiTitleList ? (
         <>
-          <PostTitle>{wiki.title}</PostTitle>
-          <PostContent>
+          <PostTitle data-cy="wikiTitle">{wiki.title}</PostTitle>
+          <PostContent data-cy="wikiContent">
             <AutoHyperlinks
               text={encodeURIComponent(wiki.content)}
               linkArray={wikiTitleList}
@@ -91,10 +91,12 @@ function WikiDetailPage() {
           </PostContent>
           <BtnWrapper>
             <Link to={"/"}>
-              <Button size="normal">목록으로</Button>
+              <Button size="normal" test-id="goToListBtn">
+                목록으로
+              </Button>
             </Link>
             <Link to={`/update/${encodeURIComponent(wiki.title)}`}>
-              <Button size="normal" color="blueBtn">
+              <Button size="normal" color="blueBtn" test-id="updateBtn">
                 수정
               </Button>
             </Link>
